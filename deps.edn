@@ -1,10 +1,14 @@
-{:deps {org.clojure/clojure {:mvn/version "1.11.1"}
-        org.clojure/clojurescript {:mvn/version "1.11.4"}
-        cljsjs/react-dom {:mvn/version "16.6.0-0"}
+{:deps {cljsjs/react-dom {:mvn/version "16.6.0-0"}
         cljsjs/react {:mvn/version "16.6.0-0"}
         sablono/sablono {:mvn/version "0.8.6"}}
  :paths ["src" "resources" "target"]
- :aliases {:build {:extra-deps {com.bhauman/figwheel-main {:mvn/version "0.2.17"}
+ :aliases {:cljs-storm {:classpath-overrides {org.clojure/clojurescript nil}
+                        :extra-deps {com.github.jpmonettas/clojurescript {:mvn/version "1.11.60-2"}
+                                     com.github.jpmonettas/flow-storm-inst {:mvn/version "3.7.5"}}
+                        :jvm-opts ["-Dcljs.storm.instrumentOnlyPrefixes=flappy-bird-demo"
+                                   "-Dcljs.storm.instrumentEnable=true"
+                                   "-Dflowstorm.startRecording=false"]}
+           :build {:extra-deps {com.bhauman/figwheel-main {:mvn/version "0.2.17"}
                                 com.bhauman/rebel-readline-cljs {:mvn/version "0.1.4"}
                                 ;; to silence SL4J warnings
                                 org.slf4j/slf4j-nop {:mvn/version "1.7.30"}}

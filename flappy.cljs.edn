@@ -1,1 +1,2 @@
-{:main flappy-bird-demo.core}
+{:main flappy-bird-demo.core
+ :preloads [flow-storm.storm-preload]}
